@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div style="padding: 20px; background-color: grey;  height: 100vh;">
+    <p style="font-size: 24px; text-align: center;">
+        A page that lists all the topics on a site or a specific topic by ID
+        {% if topic_id != 0 %}
+        = {{topic_id}}
+        {% endif %}
+    </p>
+</div>
+{% endblock %}

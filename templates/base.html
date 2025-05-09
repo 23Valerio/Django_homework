@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body style="background-color: black">
+        <header style="display: flex; justify-content: flex-end; padding: 0 20px 0 20px; ">
+            <ul style="display: flex; gap: 20px;">
+                <li><a style="color: white; font-size: 24px" href="{% url 'login' %}">Login</a></li>
+                <li><a style="color: white; font-size: 24px" href="{% url 'register' %}">Register</a></li>
+                <li><a style="color: white; font-size: 24px" href="{% url 'user_profile' %}">Profile</a></li>
+                <li><a style="color: white; font-size: 24px" href="{% url 'set_password' %}">Change Password</a></li>
+            </ul>
+        </header>
+        <div style="display: flex; gap: 50px; padding: 20px; white-space: nowrap;">
+            <div>
+                <ul>
+                    <li><a style="color: white; font-size: 24px" href="{% url 'index' %}">HOME</a></li>
+                    <li></li>
+                    <li><a style="color: white; font-size: 24px" href="{% url 'my_feed' %}">My feed</a></li>
+                    <li><a style="color: white; font-size: 24px" href="{% url 'article_by_id' 0 %}">Article by ID</a></li>
+                    <li><a style="color: white; font-size: 24px" href="{% url 'create_article' %}">Create topic</a></li>
+                    <li><a style="color: white; font-size: 24px" href="{% url 'topics' %}">Topics</a></li>
+                    <li><a style="color: white; font-size: 24px" href="{% url 'article_by_date' year=2000 month=10 %}">Article by date</a></li>
+                </ul>
+            </div>
+            <div style="width: 100%;" >
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+
+    </body>
+</html>

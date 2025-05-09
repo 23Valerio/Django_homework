@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div style="padding: 20px; background-color: grey;  height: 100vh; display: flex; justify-content: space-between;">
+    <p style="font-size: 24px; text-align: center;">The page where the article will be displayed by ID = {{ article_id }} .</p>
+    <a style="display: block; color: green; font-size: 36px" href="{% url 'update_article' article_id %}">Update Article</a>
+</div>
+
+{% endblock %}
