@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpRequest
 
+def index(request):
+    return render(request, 'index.html')
+
 def main(request: HttpRequest) -> HttpResponse:
     return HttpResponse("Hey! It's your main view!!")
 
