@@ -4,50 +4,55 @@ from django.http import HttpResponse, HttpRequest
 def index(request):
     return render(request, 'index.html')
 
-def main(request: HttpRequest) -> HttpResponse:
-    return HttpResponse("Hey! It's your main view!!")
+def my_feed(request):
+    return render(request, 'my_feed.html')
 
-def my_feed(request: HttpRequest) -> HttpResponse:
-    return HttpResponse("A page that will only contain articles on topics the user is subscribed to.")
+def article_by_id(request, article_id = 0):
+    return render(request, 'article_by_id.html', {'article_id': article_id})
 
-def article_by_id(request: HttpRequest, article_id) -> HttpResponse:
-    return HttpResponse("The page where the article will be displayed by ID.")
+def create_article(request):
+    return render(request, 'create_article.html')
+
+def show_topics(request, topic_id = 0):
+    return render(request, 'topics.html', {'topic_id': topic_id})
+
+def login(request):
+    return render(request, 'login.html')
+
+def register(request):
+    return render(request, 'register.html')
+
+def user_profile(request):
+    return render(request, 'user_profile.html')
+
+def set_password(request):
+    return render(request, 'set_password.html')
+
+def article_by_date(request, year, month):
+    return render(request, 'article_by_date.html', {'year': year, 'month': month})
+
+def update_article(request, article_id = 0):
+    return render(request, 'update_article.html', {'article_id': article_id})
+
+
 
 def add_comment(request: HttpRequest, article_id) -> HttpResponse:
     return HttpResponse("The address we will use to write comments to the article.")
 
-def update_article(request: HttpRequest, article_id) -> HttpResponse:
-    return HttpResponse("The page we will use to edit an existing article.")
-
 def delete_article(request: HttpRequest, article_id) -> HttpResponse:
     return HttpResponse("The address we will use to delete the article")
-
-def create_article(request: HttpRequest) -> HttpResponse:
-    return HttpResponse("The page on which we will create new articles.")
-
-def show_topics(request: HttpRequest, topic_id = 0) -> HttpResponse:
-    return HttpResponse("A page that lists all the topics on a site or a specific topic")
-   
+  
 def subscribe(request: HttpRequest, topic_id) -> HttpResponse:
     return HttpResponse("Address for subscription to a specific topic")
 
 def unsubscribe(request: HttpRequest, topic_id) -> HttpResponse:
     return HttpResponse("Address for unsubscribing from a specific topic")
 
-def user_profile(request: HttpRequest) -> HttpResponse:
-    return HttpResponse("A page with user data and a list of his subscriptions")
 
-def register(request: HttpRequest) -> HttpResponse:
-    return HttpResponse("New user registration page")
 
-def set_password(request: HttpRequest) -> HttpResponse:
-    return HttpResponse("Page with password change")
 
-def login(request: HttpRequest) -> HttpResponse:
-    return HttpResponse("Page to enter the site")
+
 
 def logout(request: HttpRequest) -> HttpResponse:
     return HttpResponse("Address for exiting the site")
 
-def article_list(request: HttpRequest, year, month) -> HttpResponse:
-    return HttpResponse("Page that will contain articles created in a specific month. If a request is not for a real date, there should be an error.")
