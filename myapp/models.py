@@ -15,7 +15,7 @@ class Article(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     autor = models.ForeignKey(User, on_delete=models.CASCADE, related_name='articles')
     topics = models.ManyToManyField(Topic, related_name='articles')
-
+   
     def __str__(self) -> str:
         return f"{self.name} by {self.autor.username}"
 

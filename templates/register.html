@@ -2,8 +2,38 @@
 
 {% block content %}
 <div style="padding: 20px; background-color: grey;  height: 100vh;">
-    <p style="font-size: 24px; text-align: center;">CREATE USERNAME:</p>
-    <p style="font-size: 24px; text-align: center;">CREATE PASSWORD:</p>
-    <p style="font-size: 24px; text-align: center;">REPEAT PASSWORD:</p>
+        <form method="post">
+        {% csrf_token %}
+        
+        {% if form.non_field_errors %}
+            <div style="color: red;">
+                {% for error in form.non_field_errors %}
+                    {{ error }}
+                {% endfor %}
+            </div>
+        {% endif %}
+        
+        <div>
+            {{ form.username.label_tag }}
+            {{ form.username }}
+            {% if form.username.errors %}
+                <div style="color: red;">{{ form.username.errors }}</div>
+            {% endif %}
+        </div>
+        
+        <div>
+            {{ form.password.label_tag }}
+            {{ form.password }}
+            {% if form.password.errors %}
+                <div style="color: red;">{{ form.password.errors }}</div>
+            {% endif %}
+        </div>
+        
+        <div>
+            {{ form.confirm_password.label_tag }}
+            {{ form.confirm_password }}
+        </div>
+        <button type="submit">REGISTER</button>
+    </form>
 </div>
 {% endblock %}

@@ -6,11 +6,15 @@
     </head>
     <body style="background-color: black">
         <header style="display: flex; justify-content: flex-end; padding: 0 20px 0 20px; ">
-            <ul style="display: flex; gap: 20px;">
-                <li><a style="color: white; font-size: 24px" href="{% url 'login' %}">Login</a></li>
-                <li><a style="color: white; font-size: 24px" href="{% url 'register' %}">Register</a></li>
-                <li><a style="color: white; font-size: 24px" href="{% url 'user_profile' %}">Profile</a></li>
-                <li><a style="color: white; font-size: 24px" href="{% url 'set_password' %}">Change Password</a></li>
+            <ul style="display: flex; gap: 20px; color: white; font-size: 24px; list-style-type: none;">
+                {% if user.is_authenticated %}
+                    <li><strong>{{ user.username }}</strong></li>
+                    <li><a href="{% url 'logout' %}">LogOut</a></li>
+                    <li><a href="{% url 'user_profile' %}">Profile</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    <li><a href="{% url 'register' %}">Register</a></li>
+                {% endif %}
             </ul>
         </header>
         <div style="display: flex; gap: 50px; padding: 20px; white-space: nowrap;">
@@ -19,7 +23,6 @@
                     <li><a style="color: white; font-size: 24px" href="{% url 'index' %}">HOME</a></li>
                     <li></li>
                     <li><a style="color: white; font-size: 24px" href="{% url 'my_feed' %}">My feed</a></li>
-                    <li><a style="color: white; font-size: 24px" href="{% url 'article_by_id' 0 %}">Article by ID</a></li>
                     <li><a style="color: white; font-size: 24px" href="{% url 'create_article' %}">Create topic</a></li>
                     <li><a style="color: white; font-size: 24px" href="{% url 'topics' %}">Topics</a></li>
                     <li><a style="color: white; font-size: 24px" href="{% url 'article_by_date' year=2000 month=10 %}">Article by date</a></li>

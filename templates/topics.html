@@ -2,11 +2,14 @@
 
 {% block content %}
 <div style="padding: 20px; background-color: grey;  height: 100vh;">
-    <p style="font-size: 24px; text-align: center;">
-        A page that lists all the topics on a site or a specific topic by ID
-        {% if topic_id != 0 %}
-        = {{topic_id}}
-        {% endif %}
-    </p>
+    <ul>
+        {% for topic in topics %}
+        <a href="{% url 'articles_by_topic' topic_id=topic.id %}" style="color: inherit; text-decoration: none; cursor: pointer;">
+            <li style="font-size: 24px; margin: 5px;">
+                {{ topic.name }}
+            </li>
+        </a>
+        {% endfor %}
+    </ul>
 </div>
 {% endblock %}

@@ -2,7 +2,36 @@
 
 {% block content %}
 <div style="padding: 20px; background-color: grey;  height: 100vh;">
-    <p style="font-size: 24px; text-align: center;">LOGIN:</p>
-    <p style="font-size: 24px; text-align: center;">PASSWORD:</p>
+        <form method="post">
+        {% csrf_token %}
+        
+        {% if form.non_field_errors %}
+            <div>
+                {% for error in form.non_field_errors %}
+                    {{ error }}
+                {% endfor %}
+            </div>
+        {% endif %}
+        
+        <div>
+            <label for="{{ form.username.id_for_label }}">Username</label>
+            {{ form.username }}
+            {% if form.username.errors %}
+                <div>
+                    {% for error in form.username.errors %}
+                        {{ error }}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+        
+        <div>
+            <label for="{{ form.password.id_for_label }}">Password</label>
+            {{ form.password }}
+
+        </div>
+        
+        <button type="submit">Login</button>
+    </form>
 </div>
 {% endblock %}

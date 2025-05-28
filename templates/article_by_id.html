@@ -2,9 +2,14 @@
 
 {% block content %}
 
-<div style="padding: 20px; background-color: grey;  height: 100vh; display: flex; justify-content: space-between;">
-    <p style="font-size: 24px; text-align: center;">The page where the article will be displayed by ID = {{ article_id }} .</p>
-    <a style="display: block; color: green; font-size: 36px" href="{% url 'update_article' article_id %}">Update Article</a>
+<div style="padding: 20px; background-color: grey;">
+    <h1 style="color: black;">{{ article.name }}</h1>
+    <p>by {{ article.autor.username }}</p>
+    <p>created at {{article.created_at|date:"d.m.Y H:i" }}</p>
+    <p style="white-space: pre-wrap; font-size: 20px;">{{article.text}}</p>
+    {% for topic in article.topics.all %}
+        <span style="font-size: 16px;">{{ topic.name }} </span>
+    {% endfor %}
 </div>
 
 {% endblock %}

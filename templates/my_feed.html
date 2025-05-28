@@ -1,7 +1,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div style="padding: 20px; background-color: grey;  height: 100vh;">
-    <p style="font-size: 24px; text-align: center;">A page that will only contain articles on topics the user is subscribed to.</p>
+<div style="padding: 20px; background-color: grey;">
+    <ul>
+        {% for article in articles %}
+        <a href="{% url 'article_by_id' article_id=article.id %}" style="color: inherit; text-decoration: none; cursor: pointer;">
+            <li style="font-size: 24px; margin: 5px; border: 1px solid black; border-radius: 5px;">
+                {{ article.name }} by {{ article.autor.username }}
+                <p style="white-space: pre-wrap;  margin: 5px; ">{{ article.text|truncatechars:50}}</p>
+                {% for topic in article.topics.all %}
+                    <span style="font-size: 16px;">{{ topic.name }} </span>
+                {% endfor %}
+            </li>
+        </a>
+        {% endfor %}
+    </ul>
 </div>
 {% endblock %}
